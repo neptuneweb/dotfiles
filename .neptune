@@ -1,0 +1,63 @@
+# .bashrc
+
+# User specific aliases and functions
+
+alias mkdir='mkdir -p'
+alias lth='/bin/ls -lt | head -20'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias ci='ci -u'
+alias cim="ci -u -m'standard html changes'"
+alias vi='vim'
+alias rd='rcsdiff -Bb'
+alias diff='diff -Bb'
+PATH="/neptune/cm/webtools:/home/cdalsass/scripts:/neptune/scripts:/usr/java/jdk1.3.1/bin:/usr/sbin:/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/mysql/bin:${PATH}"
+export PATH
+alias lg='ls -lt | grep '
+alias findhtml='find . \( -name "*.html" -o -name "*.php" -o -name "*.htm" -o "*.phtml" \) -print'
+set prompt = "`uname -n`:%/ \
+% "
+
+umask  003
+
+# RCS
+alias mylocks='rlog -L -R -lcdalsass *,v | perl -ne "s/,v$//; print"'
+alias ulocks='rlog -L -R -l\!* RCS/*,v *,v | more'
+alias alllocks='rlog -L -R RCS/*,v *,v | more'
+alias locks='rlog -L -h RCS/*,v  *,v | more'
+alias llocks='rlog -L RCS/*,v *,v | more'
+alias ls='ls --color'
+alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
+
+# CVS
+export CVSROOT=/var/lib/cvsroot
+CVSEDITOR=vi
+export CVSEDITOR
+export RCSEDITOR=edit
+
+CVS_RSH=/usr/bin/ssh
+export CVS_RSH
+export LANG=C
+alias cvd="cvs diff -Bb"
+alias cvc='cvs commit'
+
+# performance metrix
+alias cputop="ps --no-headers acxw -o %cpu,cmd,user | sort -nr | head -20"
+alias memtop="ps --no-headers acxw -o %mem,rss,cmd,user | sort -nr | head -20"
+alias diskhogs="du -k --max-depth=1 * | sort -nr | head"
+alias more="less -i"
+alias less="less -i"
+#alias "ls -l"="/bin/ls -lt"
+
+alias e=export
+function drop() { /sbin/iptables -I INPUT 1 -s "$1" -j DROP;}
+
+function htmlfind () { find . | grep -v /var/ | /neptune/scripts/addnulls | xargs -0 grep "$1"; }
+
+function myfind() { find . -name "*$1*" -print; }
+alias ftp=lftp
+
+# THOSE WITH PASSWORDS
+alias mysql='mysql -u webuser --password=topsecret --pager=less'
+alias mysqldump='mysqldump --user=webuser --password=topsecret'
