@@ -59,5 +59,11 @@ function myfind() { find . -name "*$1*" -print; }
 alias ftp=lftp
 
 # THOSE WITH PASSWORDS
-alias mysql='mysql -u XXXX --password=XXXX --pager=less'
-alias mysqldump='mysqldump --user=XXXX --password=XXXX'
+alias mysql='mysql -u webuser --password=xxx --pager=less'
+alias mysqldump='mysqldump --user=webxxxuser --password=xxx'
+
+
+function drop() { /sbin/iptables -I INPUT 1 -s "$1" -j DROP ;}
+function undropall() { /sbin/iptables --list -n --line-numbers | grep "DROP       all" | perl -ne 'print "iptables --delete INPUT 1\n"; system("iptables --delete INPUT 1")'; }
+
+alias now='/bin/date +%Y_%m_%d'
