@@ -11,6 +11,7 @@ alias ci='ci -u'
 alias cim="ci -u -m'standard html changes'"
 alias vi='vim'
 alias rd='rcsdiff -Bb'
+alias svnd='svn diff --diff-cmd diff -x --ignore-space-change'
 alias diff='diff -Bb'
 PATH="/neptune/cm/webtools:/home/cdalsass/scripts:/neptune/scripts:/usr/java/jdk1.3.1/bin:/usr/sbin:/sbin:/usr/X11R6/bin:/usr/local/bin:/usr/local/mysql/bin:${PATH}"
 export PATH
@@ -61,7 +62,6 @@ alias ftp=lftp
 # THOSE WITH PASSWORDS
 alias mysql='mysql -u webuser --password=xxx --pager=less'
 alias mysqldump='mysqldump --user=webxxxuser --password=xxx'
-
 
 function drop() { /sbin/iptables -I INPUT 1 -s "$1" -j DROP ;}
 function undropall() { /sbin/iptables --list -n --line-numbers | grep "DROP       all" | perl -ne 'print "iptables --delete INPUT 1\n"; system("iptables --delete INPUT 1")'; }
