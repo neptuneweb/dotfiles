@@ -47,8 +47,8 @@ alias cvc='cvs commit'
 alias cputop="ps --no-headers acxw -o %cpu,cmd,user | sort -nr | head -20"
 alias memtop="ps --no-headers acxw -o %mem,rss,cmd,user | sort -nr | head -20"
 alias diskhogs="du -k --max-depth=1 * | sort -nr | head"
-alias more="less -i"
-alias less="less -i"
+alias more="less -i -R"
+alias less="less -i -R"
 #alias "ls -l"="/bin/ls -lt"
 
 alias e=export
